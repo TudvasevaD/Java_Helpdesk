@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<title>Helpdesk</title>
+</head>
+  <body>
+    <h1>Редактирование заявки</h1>
+	<table border="1" width="100%">
+		<tr>
+			<th>Номер</th>
+			<th>Тема</th>
+			<th>Описание проблемы</th>
+			<th>Пользователь</th>
+			<th>Статус</th>
+			<th>Дата создания</th>
+			<th>Комментарий</th>
+		</tr>
+		<tr>
+			<form id="add-office-form" class="form w-25 mx-auto" th:action="@{/requests/ticketred/{id}(id=${request.id})}" method="post" th:object="${request}">
+
+			<td class="number"><input type="number" class="form-control text-center" name="id" th:field="*{id}" th:value="*{id}"></td>
+			<td class="number"><input type="number" class="form-control text-center" name="theme" th:field="*{theme}" th:value="*{theme}"></td>
+			<td class="number"><input type="number" class="form-control text-center" name="text" th:field="*{text}" th:value="*{text}"></td>
+			<td class="number"><input type="number" class="form-control text-center" name="user" th:field="*{user}" th:value="*{user}"></td>
+			<td><select id="selectstatus" name="status">
+				<option th:each="request : ${requests}"
+						th:value="${status.name}" th:text="${request.status}"> Выберите статус </option>
+			</select></td>
+			<td class="number"><input type="number" class="form-control text-center" name="rdate" th:field="*{rdate}" th:value="*{rdate}"></td>
+			<td class="number"><input type="number" class="form-control text-center" name="comm" th:field="*{comm}" th:value="*{comm}"></td>
+			<td><input type="submit" value="Сохранить"></td>
+			</form>
+
+		</tr>
+	</table>
+  </body>
+</html>

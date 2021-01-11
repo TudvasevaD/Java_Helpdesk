@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<title>Helpdesk</title>
+</head>
+  <body>
+    <h1>Добро пожаловать, Admin!</h1>
+	<p>Список заявок:</p>
+
+	<table border="1" width="100%">
+		<tr>
+			<th>Номер</th>
+			<th>Тема</th>
+			<th>Описание проблемы</th>
+			<th>Пользователь</th>
+			<th>Статус</th>
+			<th>Дата создания</th>
+			<th>Комментарий</th>
+		</tr>
+		<th:block th:each="request, iter : ${requests}">
+			<tr class="row mx-auto">
+				<th class="col-md-2 text-center" th:text="${request.id + 1}"></th>
+				<td class="col-md-2 text-center" th:text="${request.theme}"></td>
+				<td class="col-md-2 text-center" th:text="${request.text}"></td>
+				<td class="col-md-2 text-center" th:text="${request.user}"></td>
+				<td class="col-md-2 text-center" bgcolor="lime" th:text="${request.status}"></td>
+				<td class="col-md-2 text-center" th:text="${request.rdate}"></td>
+				<td class="col-md-2 text-center" th:text="${request.comm}"></td>
+				<td><form><input type="submit" value="Изменить"></form></td>
+			</div>
+			</td>
+		</tr>
+	</th:block>
+	</table>
+  </body>
+</html>

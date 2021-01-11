@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<title>Helpdesk</title>
+</head>
+  <body>
+    <h1>Создание заявки</h1>
+	<table border="1" width="100%">
+		<tr>
+			<th>Тема</th>
+			<th>Описание проблемы</th>
+			<th>Пользователь</th>
+			<th>Статус</th>
+			<th>Дата создания</th>
+		</tr>
+		<tr>
+			<form id="add-shipment-form" class="form w-25 mx-auto" th:action="@{/requests/ticket}" method="post" th:object="${requestDTO}">
+			<td><select id="selecttheme" name="theme">
+				<option th:each="request : ${requests}"
+						th:value="${theme.name}" th:text="${request.theme}"> Выберите тему </option>
+			</select></td>
+			<td><span th:if="${#fields.hasErrors('text')}" th:errors="*{text}"style="color: red"></span></td>
+			<td><input type="text" class="form-control text-center" name="user" th:value="*{user}"></td>
+			<td bgcolor="yellow"><input type="text" class="form-control text-center" name="status" th:value="*{status}"></td>
+			<td><input type="date" name="date" th:if="${#fields.hasErrors('rdate')}" th:errors="*{rdate}"style="color: red"></td>
+			<td><input type="submit" value="Сохранить"></td>
+			</form>
+		</tr>
+	</table>
+  </body>
+</html>

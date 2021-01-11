@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Helpdesk</title>
+</head>
+  <body>
+    <h1>Вход в систему</h1>
+	<form class="form w-25 mx-auto" th:action="@{/users/login}" method="post"><input type="hidden" name="_csrf" value="5b20d0a4-4120-42a9-b849-9753f99a801a">
+		<div class="form-group">
+			<p><label for="username" class="font-weight-bold">Логин</label></p>
+			<p><input type="text" class="form-control" id="username" placeholder="Логин..." name="username"></p>
+		</div>
+		<div class="form-group">
+			<p><label for="password" class="font-weight-bold">Пароль</label></p>
+			<p><input type="password" class="form-control" id="password" placeholder="Пароль..." name="password"></p>
+		</div>
+		<div class="button-holder d-flex justify-content-center">
+			</p><button type="submit" class="btn btn-dark">Войти</button></p>
+		</div>
+	</form>
+  </body>
+</html>
